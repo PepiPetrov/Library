@@ -1,4 +1,5 @@
-async function addToMain() {
+async function addToMain(e) {
+    e.preventDefault()
     const ul = document.querySelector('main')
     ul.innerHTML = ''
     const books = await getData()
@@ -32,7 +33,7 @@ async function getData() {
     const data = await response.json()
     return data
 }
-document.querySelector('button').addEventListener('click', addToMain)
+document.querySelector('form').addEventListener('submit', addToMain)
 function view(filtered, ul) {
     filtered.forEach(x => {
         const a = document.createElement('button')

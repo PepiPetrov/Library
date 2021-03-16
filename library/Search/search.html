@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +8,26 @@
     <title>Search for a book/-s</title>
     <script src="search.js" defer></script>
 </head>
+
 <body>
-    <nav>
-        <a href="../home.html">Home</a>
-        <a href="../Catalog/catalog.html">Catalog</a>
-        <a href="../Add/add.html">Add a book</a>
-        <a href="../Edit/editAbook.html">Edit a book</a>
-        <a href="../Remove/remove.html">Remove a book</a>
-        <a href="../Clear/clear.html">Clear all books</a>
-    </nav>
+    <header>
+        <nav>
+            <a href="../home.html">Home</a>
+            <a href="../Catalog/catalog.html">Catalog</a>
+            <a href="../Add/add.html">Add a book</a>
+            <a href="../Edit/editAbook.html">Edit a book</a>
+            <a href="../Remove/remove.html">Remove a book</a>
+            <a href="../Clear/clear.html">Clear all books</a>
+        </nav>
+    </header>
     <br>
-    <input type="text" id="c" placeholder="Keyword">
-    <input type="text" id="cr" placeholder="Search by...">
-    <button id="go">Go</button>
-    <br><br><br>
+    <form>
+        <input type="text" id="c" placeholder="Keyword">
+        <input type="text" id="cr" placeholder="Search by...">
+        <button id="go">Go</button>
+    </form>
+    <br><br>
     <main></main>
-</body> 
+</body>
+
 </html>
