@@ -7,20 +7,18 @@ async function addToMain(e) {
     const criteria = document.getElementById('cr').value
     const values = Object.values(books)
     let filtered = [];
-    if (keyword == '' || criteria == '') {
-        return alert('Keyword and criteria are required!')
-    }else if (criteria == 'Title' || criteria == 'Заглавие') {
+    if (keyword == '') {
+        return alert('Keyword is required!')
+    }else if (criteria == 'Заглавие') {
         filtered = values.filter(x => x.name.includes(keyword))
-    }else if (criteria == 'Author' || criteria == 'Автор') {
+    }else if (criteria == 'Автор') {
         filtered = values.filter(x => x.author.includes(keyword))
-    }else if (criteria == 'Publisher' || criteria == 'Издател') {
+    }else if (criteria == 'Издател') {
         filtered = values.filter(x => x.publisher.includes(keyword))
-    }else if (criteria == 'Year of publishing' || criteria == 'Година на издаване') {
+    }else if (criteria == 'Година на издаване') {
         filtered = values.filter(x => x.year == keyword)
-    }else if (criteria == 'Genre' || criteria == 'Жанр') {
+    }else if (criteria == 'Жанр') {
         filtered = values.filter(x => x.genre == keyword)
-    }else{
-        return alert('Wrong keyword!')
     }
     if (filtered.length == 0) {
         ul.textContent = 'No books'
