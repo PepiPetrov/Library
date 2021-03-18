@@ -1,6 +1,10 @@
 async function addToMain() {
     const ul = document.querySelector('main')
     const books=await getData()
+    if(books==null){
+        ul.textContent='No books'
+        return
+    }
     const values=Object.values(books)
     ul.innerHTML=''
     values.forEach(x=>{
