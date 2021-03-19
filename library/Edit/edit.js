@@ -27,7 +27,7 @@ async function add(е) {
     const img = document.getElementById('newImg').value
     const genre = document.getElementById('newGenre').value
     const book = { name: title, author, description, publisher, year: yearOfPublishing, img, genre }
-    if(title==''||author==''||description==''||publisher==''||yearOfPublishing==''||genre==''){
+    if(title.trim()==''||author.trim()==''||description.trim()==''||publisher.trim()==''||yearOfPublishing.trim()==''||genre.trim()==''){
         return alert('All book fields are required!')
     }
     const value = await getData()

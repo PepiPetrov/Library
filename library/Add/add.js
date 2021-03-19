@@ -8,7 +8,7 @@ async function add(e) {
     const img = document.getElementById('img').value
     const genre = document.getElementById('genre').value
     const book = { name: title, author, description, publisher, year: yearOfPublishing, img, genre }
-    if(title==''||author==''||description==''||publisher==''||yearOfPublishing==''||genre==''){
+    if(title.trim()==''||author.trim()==''||description.trim()==''||publisher.trim()==''||yearOfPublishing.trim()==''||genre.trim()==''){
         return alert('All book fields are required!')
     }
     fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json', {
