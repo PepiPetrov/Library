@@ -13,15 +13,15 @@ async function addToMain(e) {
     if (keyword == '') {
         return alert('Keyword is required!')
     }else if (criteria == 'Заглавие') {
-        filtered = values.filter(x => x.name.includes(keyword))
+        filtered = values.filter(x => x.name.toLocaleLowerCase().includes(keyword))
     }else if (criteria == 'Автор') {
-        filtered = values.filter(x => x.author.includes(keyword))
+        filtered = values.filter(x => x.author.toLocaleLowerCase().includes(keyword))
     }else if (criteria == 'Издател') {
-        filtered = values.filter(x => x.publisher.includes(keyword))
+        filtered = values.filter(x => x.publisher.toLocaleLowerCase().includes(keyword))
     }else if (criteria == 'Година на издаване') {
         filtered = values.filter(x => x.year == keyword)
     }else if (criteria == 'Жанр') {
-        filtered = values.filter(x => x.genre == keyword)
+        filtered = values.filter(x => x.genre.toLocaleLowerCase().includes(keyword))
     }
     if (filtered.length == 0) {
         ul.textContent = 'No books'
@@ -29,6 +29,7 @@ async function addToMain(e) {
     }
     filtered.sort((a,b)=>a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()))
     view(filtered, ul)
+    document.getElementById('c').value=''
 }
 async function getData() {
     const response = await fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json')
