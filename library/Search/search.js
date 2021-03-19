@@ -27,6 +27,7 @@ async function addToMain(e) {
         ul.textContent = 'No books'
         return
     }
+    filtered.sort((a,b)=>a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()))
     view(filtered, ul)
 }
 async function getData() {
@@ -54,6 +55,7 @@ function view(filtered=[], ul) {
         yearOfpublishing.textContent = `Year of publishing: ${x.year}`
         const img = document.createElement('img')
         img.src = x.img
+        img.alt='No image'
         divInfo.appendChild(title)
         divInfo.appendChild(author)
         divInfo.appendChild(genre)

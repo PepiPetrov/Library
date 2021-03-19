@@ -26,6 +26,7 @@ async function addToMain() {
         yearOfpublishing.textContent=`Year of publishing: ${x.year}`
         const img=document.createElement('img')
         img.src=x.img
+        img.alt='No image'
         divInfo.appendChild(title)
         divInfo.appendChild(author)
         divInfo.appendChild(genre)
