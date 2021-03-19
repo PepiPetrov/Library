@@ -6,7 +6,7 @@ async function addToMain(e) {
     if(books==null){
         return ul.innerHTML='No books - Catalog is empty! <a href="../Add/add.html">Add your first book</a>'
     }
-    const keyword = document.getElementById('c').value
+    const keyword = document.getElementById('c').value.toLocaleLowerCase()
     const criteria = document.getElementById('cr').value
     const values = Object.values(books)
     let filtered = [];
