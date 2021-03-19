@@ -2,10 +2,11 @@ async function addToMain() {
     const ul = document.querySelector('main')
     const books=await getData()
     if(books==null){
-        ul.textContent='No books'
+        ul.innerHTML='Catalog is empty. But you can <a href="../Add/add.html">Add your first book</a>'
         return
     }
     const values=Object.values(books)
+    values.sort((a,b)=>a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()))
     ul.innerHTML=''
     values.forEach(x=>{
         const a=document.createElement('button')

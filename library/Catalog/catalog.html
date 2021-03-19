@@ -10,28 +10,6 @@
 </head>
 
 <body>
-    <!--<script>
-        async function sort() {
-            const res = await fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json')
-            const data = await res.json()
-            const books = Object.values(data)
-            fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json', {
-                method: "put",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({})
-            })
-            books.sort((a, b) => a['name'].localeCompare(b['name']))
-            console.log(books)
-            books.forEach(book => {
-                fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json', {
-                    method: "POST",
-                    headers: { 'Content-Type': "application/json" },
-                    body: JSON.stringify(book)
-                })
-            });
-        }
-        sort()
-    </script>-->
     <header>
         <nav>
             <a href="../home.html">Home</a>
