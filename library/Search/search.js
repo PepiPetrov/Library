@@ -1,7 +1,7 @@
 async function addToMain(e) {
     e.preventDefault()
     const ul = document.querySelector('main')
-    ul.innerHTML = ''
+    ul.innerHTML='Searching&hellip;'
     const books = await getData()
     if(books==null){
         return ul.innerHTML='No books - Catalog is empty! <a href="../Add/add.html">Add your first book</a>'
@@ -38,6 +38,7 @@ async function getData() {
 }
 document.querySelector('form').addEventListener('submit', addToMain)
 function view(filtered=[], ul) {
+    ul.innerHTML=''
     filtered.forEach(x => {
         const a = document.createElement('button')
         a.innerText = x.name

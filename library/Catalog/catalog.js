@@ -1,5 +1,6 @@
 async function addToMain() {
     const ul = document.querySelector('main')
+    ul.innerHTML='Loading&hellip;'
     const books=await getData()
     if(books==null){
         ul.innerHTML='Catalog is empty. But you can <a href="../Add/add.html">Add your first book</a>'
