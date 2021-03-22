@@ -21,17 +21,20 @@
         </nav>
     </header>
     <br>
+    <p style="display: none;"></p>
     <button id="clear">Clear books</button>
     <script>
         document.getElementById('clear').addEventListener('click', () => {
             let isSure = confirm('Do you want to clear the catalog?')
             if (isSure) {
-                fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json', {
+                document.querySelector('p').style.display='block'
+                document.querySelector('p').textContent='Clearing books...'
+                fetch('https://books-76270-default-rtdb.firebaseio.com/books.json', {
                     method: "put",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({})
                 })
-                window.location.pathname='D:\\Users\\Windows\\Desktop\\library\\Catalog\\catalog.html'
+                setTimeout(()=>window.location.pathname='D:\\Users\\Windows\\Desktop\\library\\Catalog\\catalog.html',500)
             }
         })
     </script>
