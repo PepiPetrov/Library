@@ -3,7 +3,7 @@ document.getElementById('generateForm').addEventListener('submit', async (e) => 
     const data = await getData()
     const old = document.getElementById('old').value.trim()
     const bookKey = findBook(old, data)
-    if(bookKey==undefined){
+    if (bookKey == undefined) {
         return alert('Book not found!')
     }
     const res = await fetch('https://books-76270-default-rtdb.firebaseio.com/books/' + bookKey + '.json')
@@ -15,6 +15,7 @@ document.getElementById('generateForm').addEventListener('submit', async (e) => 
     document.getElementById('newYear').value = book.year
     document.getElementById('newImg').value = book.img
     document.getElementById('newGenre').value = book.genre
+    document.getElementById('newPages').value = book.pages
 })
 async function add(е) {
     е.preventDefault()
@@ -26,8 +27,12 @@ async function add(е) {
     const yearOfPublishing = document.getElementById('newYear').value
     const img = document.getElementById('newImg').value
     const genre = document.getElementById('newGenre').value
-    const book = { name: title, author, description, publisher, year: yearOfPublishing, img, genre }
-    if(title.trim()==''||author.trim()==''||description.trim()==''||publisher.trim()==''||yearOfPublishing.trim()==''||genre.trim()==''){
+    const pages = document.getElementById('newPages').value
+    const book = { name: title, author, description, publisher, year: yearOfPublishing, img, genre, pages }
+    if (title.trim() == '' || author.trim() == '' || description.trim() == '' || publisher.trim() == ''
+        || yearOfPublishing.trim() == ''
+        || genre.trim() == ''
+        || pages.trim() == '') {
         return alert('All book fields are required!')
     }
     const value = await getData()
@@ -44,7 +49,7 @@ async function getData() {
     const data = await response.json()
     return data
 }
-function findBook(old='', data={}) {
+function findBook(old = '', data = {}) {
     for (const key in data) {
         if (data[key].name == old) {
             return key

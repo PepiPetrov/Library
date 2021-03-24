@@ -28,12 +28,17 @@ async function addToMain() {
         const img=document.createElement('img')
         img.src=x.img
         img.alt='No image'
+        img.width='500'
+        img.height='600'
+        const page=document.createElement('p')
+        page.textContent=`Pages: ${x.pages}`
         divInfo.appendChild(title)
         divInfo.appendChild(author)
         divInfo.appendChild(genre)
         divInfo.appendChild(description)
         divInfo.appendChild(publisher)
         divInfo.appendChild(yearOfpublishing)
+        divInfo.appendChild(page)
         divInfo.appendChild(img)
         divInfo.style.display='none'
         a.addEventListener('click',()=>{

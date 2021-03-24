@@ -1,10 +1,10 @@
 async function addToMain(e) {
     e.preventDefault()
     const ul = document.querySelector('main')
-    ul.innerHTML='Searching&hellip;'
+    ul.innerHTML = 'Searching&hellip;'
     const books = await getData()
-    if(books==null){
-        return ul.innerHTML='No books - Catalog is empty! <a href="../Add/add.html">Add your first book</a>'
+    if (books == null) {
+        return ul.innerHTML = 'No books - Catalog is empty! <a href="../Add/add.html">Add your first book</a>'
     }
     const keyword = document.getElementById('c').value.toLocaleLowerCase()
     const criteria = document.getElementById('cr').value
@@ -12,24 +12,24 @@ async function addToMain(e) {
     let filtered = [];
     if (keyword == '') {
         return alert('Keyword is required!')
-    }else if (criteria == 'Заглавие') {
+    } else if (criteria == 'Заглавие') {
         filtered = values.filter(x => x.name.toLocaleLowerCase().includes(keyword))
-    }else if (criteria == 'Автор') {
+    } else if (criteria == 'Автор') {
         filtered = values.filter(x => x.author.toLocaleLowerCase().includes(keyword))
-    }else if (criteria == 'Издател') {
+    } else if (criteria == 'Издател') {
         filtered = values.filter(x => x.publisher.toLocaleLowerCase().includes(keyword))
-    }else if (criteria == 'Година на издаване') {
+    } else if (criteria == 'Година на издаване') {
         filtered = values.filter(x => x.year == keyword)
-    }else if (criteria == 'Жанр') {
+    } else if (criteria == 'Жанр') {
         filtered = values.filter(x => x.genre.toLocaleLowerCase().includes(keyword))
     }
     if (filtered.length == 0) {
         ul.textContent = 'No books'
         return
     }
-    filtered.sort((a,b)=>a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()))
+    filtered.sort((a, b) => a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()))
     view(filtered, ul)
-    document.getElementById('c').value=''
+    document.getElementById('c').value = ''
 }
 async function getData() {
     const response = await fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json')
@@ -37,8 +37,8 @@ async function getData() {
     return data
 }
 document.querySelector('form').addEventListener('submit', addToMain)
-function view(filtered=[], ul) {
-    ul.innerHTML=`${filtered.length} book${filtered.length>1?'s':''} found<br><br>`
+function view(filtered = [], ul) {
+    ul.innerHTML = `${filtered.length} book${filtered.length > 1 ? 's' : ''} found<br><br>`
     filtered.forEach(x => {
         const a = document.createElement('button')
         a.innerText = x.name
@@ -57,13 +57,16 @@ function view(filtered=[], ul) {
         yearOfpublishing.textContent = `Year of publishing: ${x.year}`
         const img = document.createElement('img')
         img.src = x.img
-        img.alt='No image'
+        img.alt = 'No image'
+        const pages = document.createElement('p')
+        pages.textContent = `Pages: ${x.pages}`
         divInfo.appendChild(title)
         divInfo.appendChild(author)
         divInfo.appendChild(genre)
         divInfo.appendChild(description)
         divInfo.appendChild(publisher)
         divInfo.appendChild(yearOfpublishing)
+        divInfo.appendChild(pages)
         divInfo.appendChild(img)
         divInfo.style.display = 'none'
         a.addEventListener('click', () => {

@@ -7,8 +7,12 @@ async function add(e) {
     const yearOfPublishing = document.getElementById('year').value
     const img = document.getElementById('img').value
     const genre = document.getElementById('genre').value
-    const book = { name: title, author, description, publisher, year: yearOfPublishing, img, genre }
-    if(title.trim()==''||author.trim()==''||publisher.trim()==''||yearOfPublishing.trim()==''||genre.trim()==''){
+    const pages = document.getElementById('pages').value
+    const book = { name: title, author, description, publisher, year: yearOfPublishing, img, genre, pages }
+    if (title.trim() == '' || author.trim() == '' || publisher.trim() == ''
+        || yearOfPublishing.trim() == '' ||
+        genre.trim() == '' ||
+        pages.trim() == '') {
         return alert('All book fields are required!')
     }
     fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json', {
@@ -23,6 +27,7 @@ async function add(e) {
     document.getElementById('year').value = ''
     document.getElementById('img').value = ''
     document.getElementById('genre').value = ''
+    document.getElementById('pages').value=''
     alert('Book successfully added!')
 }
 
