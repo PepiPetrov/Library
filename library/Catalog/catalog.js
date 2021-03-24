@@ -8,7 +8,7 @@ async function addToMain() {
     }
     const values=Object.values(books)
     values.sort((a,b)=>a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()))
-    ul.innerHTML=''
+    ul.innerHTML=`${values.length} book${values.length>1?'s':''}<br><br>`
     values.forEach(x=>{
         const a=document.createElement('button')
         a.innerText=x.name

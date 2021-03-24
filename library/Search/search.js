@@ -38,7 +38,7 @@ async function getData() {
 }
 document.querySelector('form').addEventListener('submit', addToMain)
 function view(filtered=[], ul) {
-    ul.innerHTML=''
+    ul.innerHTML=`${filtered.length} book${filtered.length>1?'s':''} found<br><br>`
     filtered.forEach(x => {
         const a = document.createElement('button')
         a.innerText = x.name
