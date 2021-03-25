@@ -28,8 +28,6 @@ async function addToMain() {
         const img=document.createElement('img')
         img.src=x.img
         img.alt='No image'
-        img.width='500'
-        img.height='600'
         const page=document.createElement('p')
         page.textContent=`Pages: ${x.pages}`
         divInfo.appendChild(title)
