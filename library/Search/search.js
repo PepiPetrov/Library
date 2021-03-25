@@ -1,18 +1,24 @@
 async function addToMain(e) {
     e.preventDefault()
+    
+    const keyword = document.getElementById('c').value.toLocaleLowerCase()
+    if (keyword == '') {
+        return alert('Keyword is required!')
+    }
+
     const ul = document.querySelector('main')
     ul.innerHTML = 'Searching&hellip;'
     const books = await getData()
+
     if (books == null) {
         return ul.innerHTML = 'No books - Catalog is empty! <a href="../Add/add.html">Add your first book</a>'
     }
-    const keyword = document.getElementById('c').value.toLocaleLowerCase()
+
     const criteria = document.getElementById('cr').value
     const values = Object.values(books)
     let filtered = [];
-    if (keyword == '') {
-        return alert('Keyword is required!')
-    } else if (criteria == 'Заглавие') {
+
+    if (criteria == 'Заглавие') {
         filtered = values.filter(x => x.name.toLocaleLowerCase().includes(keyword))
     } else if (criteria == 'Автор') {
         filtered = values.filter(x => x.author.toLocaleLowerCase().includes(keyword))
@@ -23,13 +29,16 @@ async function addToMain(e) {
     } else if (criteria == 'Жанр') {
         filtered = values.filter(x => x.genre.toLocaleLowerCase().includes(keyword))
     }
+
     if (filtered.length == 0) {
         ul.textContent = 'No books'
         return
     }
+
     filtered.sort((a, b) => a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()))
     view(filtered, ul)
     document.getElementById('c').value = ''
+
 }
 async function getData() {
     const response = await fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json')
