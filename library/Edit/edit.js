@@ -29,7 +29,7 @@ async function add(е) {
     const genre = document.getElementById('newGenre').value
     const pages = document.getElementById('newPages').value
     const book = { name: title, author, description, publisher, year: yearOfPublishing, img, genre, pages }
-    if (title.trim() == '' || author.trim() == '' || description.trim() == '' || publisher.trim() == ''
+    if (title.trim() == '' || author.trim() == '' || publisher.trim() == ''
         || yearOfPublishing.trim() == ''
         || genre.trim() == ''
         || pages.trim() == '') {
