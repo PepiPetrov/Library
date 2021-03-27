@@ -43,6 +43,15 @@ async function add(е) {
         body: JSON.stringify(book)
     })
     alert('Book successfully edited!')
+    document.getElementById('old').value=''
+    document.getElementById('newTitle').value=''
+    document.getElementById('newAuthor').value=''
+    document.getElementById('newDescripion').value=''
+    document.getElementById('newPublisher').value=''
+    document.getElementById('newYear').value=''
+    document.getElementById('newImg').value=''
+    document.getElementById('newGenre').value=''
+    document.getElementById('newPages').value=''
 }
 async function getData() {
     const response = await fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json')
