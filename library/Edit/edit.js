@@ -2,6 +2,9 @@ document.getElementById('generateForm').addEventListener('submit', async (e) => 
     e.preventDefault()
     const data = await getData()
     const old = document.getElementById('old').value.trim()
+    if (old == '') {
+        return alert('Old book title is requred!')
+    }
     const bookKey = findBook(old, data)
     if (bookKey == undefined) {
         return alert('Book not found!')
@@ -19,20 +22,20 @@ document.getElementById('generateForm').addEventListener('submit', async (e) => 
 })
 async function add(е) {
     е.preventDefault()
-    const old = document.getElementById('old').value
-    const title = document.getElementById('newTitle').value
-    const author = document.getElementById('newAuthor').value
-    const description = document.getElementById('newDescripion').value
-    const publisher = document.getElementById('newPublisher').value
-    const yearOfPublishing = document.getElementById('newYear').value
-    const img = document.getElementById('newImg').value
-    const genre = document.getElementById('newGenre').value
-    const pages = document.getElementById('newPages').value
+    const old = document.getElementById('old').value.trim()
+    const title = document.getElementById('newTitle').value.trim()
+    const author = document.getElementById('newAuthor').value.trim()
+    const description = document.getElementById('newDescripion').value.trim()
+    const publisher = document.getElementById('newPublisher').value.trim()
+    const yearOfPublishing = document.getElementById('newYear').value.trim()
+    const img = document.getElementById('newImg').value.trim()
+    const genre = document.getElementById('newGenre').value.trim()
+    const pages = document.getElementById('newPages').value.trim()
     const book = { name: title, author, description, publisher, year: yearOfPublishing, img, genre, pages }
-    if (title.trim() == '' || author.trim() == '' || publisher.trim() == ''
-        || yearOfPublishing.trim() == ''
-        || genre.trim() == ''
-        || pages.trim() == '') {
+    if (title == '' || author == '' || publisher == ''
+        || yearOfPublishing == ''
+        || genre == ''
+        || pages == '') {
         return alert('All book fields are required!')
     }
     const value = await getData()
@@ -43,15 +46,15 @@ async function add(е) {
         body: JSON.stringify(book)
     })
     alert('Book successfully edited!')
-    document.getElementById('old').value=''
-    document.getElementById('newTitle').value=''
-    document.getElementById('newAuthor').value=''
-    document.getElementById('newDescripion').value=''
-    document.getElementById('newPublisher').value=''
-    document.getElementById('newYear').value=''
-    document.getElementById('newImg').value=''
-    document.getElementById('newGenre').value=''
-    document.getElementById('newPages').value=''
+    document.getElementById('old').value = ''
+    document.getElementById('newTitle').value = ''
+    document.getElementById('newAuthor').value = ''
+    document.getElementById('newDescripion').value = ''
+    document.getElementById('newPublisher').value = ''
+    document.getElementById('newYear').value = ''
+    document.getElementById('newImg').value = ''
+    document.getElementById('newGenre').value = ''
+    document.getElementById('newPages').value = ''
 }
 async function getData() {
     const response = await fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json')

@@ -1,7 +1,7 @@
 async function addToMain(e) {
     e.preventDefault()
-    
-    const keyword = document.getElementById('c').value.toLocaleLowerCase()
+
+    const keyword = document.getElementById('c').value.toLocaleLowerCase().trim()
     if (keyword == '') {
         return alert('Keyword is required!')
     }
@@ -19,19 +19,19 @@ async function addToMain(e) {
     let filtered = [];
 
     if (criteria == 'Заглавие') {
-        filtered = values.filter(x => x.name.toLocaleLowerCase().includes(keyword))
+        filtered = values.filter(x => x.name.toLocaleLowerCase().startsWith(keyword))
     } else if (criteria == 'Автор') {
-        filtered = values.filter(x => x.author.toLocaleLowerCase().includes(keyword))
+        filtered = values.filter(x => x.author.toLocaleLowerCase().startsWith(keyword))
     } else if (criteria == 'Издател') {
-        filtered = values.filter(x => x.publisher.toLocaleLowerCase().includes(keyword))
-    } else if (criteria == 'Година на издаване') {
-        filtered = values.filter(x => x.year == keyword)
+        filtered = values.filter(x => x.publisher.toLocaleLowerCase().startsWith(keyword))
     } else if (criteria == 'Жанр') {
-        filtered = values.filter(x => x.genre.toLocaleLowerCase().includes(keyword))
+        filtered = values.filter(x => x.genre.toLocaleLowerCase().startsWith(keyword))
+    } else if (criteria == 'Година на издаване') {
+        filtered = values.filter(x => x.year.toLocaleLowerCase().startsWith(keyword))
     }
 
     if (filtered.length == 0) {
-        ul.textContent = 'No books'
+        ul.textContent = 'No books found'
         return
     }
 
