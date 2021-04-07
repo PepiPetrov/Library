@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <nav>
+        <nav style="padding-left: 200px;">
             <a href="../home.html">Home</a>
             <a href="../Catalog/catalog.html">Catalog</a>
             <a href="../Add/add.html">Add a book</a>
@@ -22,7 +22,7 @@
     </header>
     <br>
     <p style="display: none;"></p>
-    <button id="clear">Clear books</button>
+    <div style="padding-left: 200px;"><button id="clear">Clear books</button></div>
     <script>
         document.getElementById('clear').addEventListener('click', () => {
             let isSure = confirm('Do you want to clear the catalog?')
