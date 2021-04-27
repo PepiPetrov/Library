@@ -63,7 +63,7 @@ async function getData() {
 }
 function findBook(old = '', data = {}) {
     for (const key in data) {
-        if (data[key].name == old) {
+        if (data[key].name.toLocaleLowerCase() == old.toLocaleLowerCase()) {
             return key
         }
     }
