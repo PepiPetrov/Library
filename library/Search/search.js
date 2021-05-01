@@ -46,47 +46,14 @@ async function getData() {
     return data
 }
 document.querySelector('form').addEventListener('submit', addToMain)
+
 function view(filtered = [], ul) {
     ul.innerHTML = `${filtered.length} book${filtered.length > 1 ? 's' : ''} found<br><br>`
     filtered.forEach(x => {
-        const a = document.createElement('button')
+        const a = document.createElement('a')
         a.innerText = x.name
-        const divInfo = document.createElement('div')
-        const title = document.createElement('p')
-        title.textContent = `Title: ${x.name}`
-        const author = document.createElement('p')
-        author.textContent = `Author: ${x.author}`
-        const genre = document.createElement('p')
-        genre.textContent = `Genre: ${x.genre}`
-        const description = document.createElement('p')
-        description.textContent = `Description: \n${x.description}`
-        const publisher = document.createElement('p')
-        publisher.textContent = `Publisher: ${x.publisher}`
-        const yearOfpublishing = document.createElement('p')
-        yearOfpublishing.textContent = `Year of publishing: ${x.year}`
-        const img = document.createElement('img')
-        img.src = x.img
-        img.alt = 'No image'
-        const pages = document.createElement('p')
-        pages.textContent = `Pages: ${x.pages}`
-        divInfo.appendChild(title)
-        divInfo.appendChild(author)
-        divInfo.appendChild(genre)
-        divInfo.appendChild(description)
-        divInfo.appendChild(publisher)
-        divInfo.appendChild(yearOfpublishing)
-        divInfo.appendChild(pages)
-        divInfo.appendChild(img)
-        divInfo.style.display = 'none'
-        a.addEventListener('click', () => {
-            if (divInfo.style.display == 'none') {
-                divInfo.style.display = 'block'
-            } else {
-                divInfo.style.display = 'none'
-            }
-        })
+        a.href = 'file:///D:/Users/Windows/Desktop/library/Details/details.html?title=' + x.name
         ul.appendChild(a)
-        ul.appendChild(divInfo)
         ul.appendChild(document.createElement('br'))
     })
 }
