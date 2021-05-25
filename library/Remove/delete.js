@@ -1,16 +1,11 @@
-async function add(e) {
-    e.preventDefault()
-    const old = document.getElementById('old').value
+async function add() {
+    const old = decodeURIComponent(window.location.search.split('=')[1])
     const value = await getData()
     const key = findBook(old, value)
-    document.getElementById('old').value=''
-    if(key==undefined){
-        return alert('Book not found!')
-    }
-    fetch('https://books-76270-default-rtdb.firebaseio.com/books/' + key+'.json', {
+    fetch('https://books-76270-default-rtdb.firebaseio.com/books/' + key + '.json', {
         method: "delete"
     })
-    alert('Book successfully removed!')
+    setTimeout(()=>window.location.pathname='D:\\Users\\Windows\\Desktop\\library\\Catalog\\catalog.html',500)
 }
 async function getData() {
     const response = await fetch('https://books-76270-default-rtdb.firebaseio.com/books/.json')
@@ -24,4 +19,4 @@ function findBook(old, data) {
         }
     }
 }
-document.querySelector('form').addEventListener('submit',add)
+add()

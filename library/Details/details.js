@@ -34,8 +34,17 @@ async function render() {
     divInfo.appendChild(publisher)
     divInfo.appendChild(yearOfpublishing)
     divInfo.appendChild(page)
-    divInfo.appendChild(img)
+    const edit = document.createElement('a')
+    edit.innerText = "Edit book"
+    edit.href = "file:///D:/Users/Windows/Desktop/library/Edit/editAbook.html?title=" + decodedTitle
+    divInfo.appendChild(edit)
+    divInfo.innerHTML += '&nbsp;&nbsp;&nbsp;'
+    const remove = document.createElement('a')
+    remove.innerText = "Remove book"
+    remove.href = "file:///D:/Users/Windows/Desktop/library/Remove/remove.html?title=" + decodedTitle
+    divInfo.appendChild(remove)
     document.querySelector('main').appendChild(divInfo)
+    divInfo.appendChild(img)
 }
 
 render()

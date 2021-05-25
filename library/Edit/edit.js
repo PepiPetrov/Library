@@ -1,11 +1,7 @@
-document.getElementById('generateForm').addEventListener('submit', async (e) => {
-    e.preventDefault()
+async function fill() {
     const data = await getData()
-    const old = document.getElementById('old').value.trim()
-    if (old == '') {
-        return alert('Old book title is requred!')
-    }
-    const bookKey = findBook(old, data)
+    const title=decodeURIComponent(window.location.search.split('=')[1])
+    const bookKey = findBook(title, data)
     if (bookKey == undefined) {
         return alert('Book not found!')
     }
@@ -19,7 +15,8 @@ document.getElementById('generateForm').addEventListener('submit', async (e) => 
     document.getElementById('newImg').value = book.img
     document.getElementById('newGenre').value = book.genre
     document.getElementById('newPages').value = book.pages
-})
+}
+fill()
 async function add(е) {
     е.preventDefault()
     const old = document.getElementById('old').value.trim()
@@ -68,4 +65,4 @@ function findBook(old = '', data = {}) {
         }
     }
 }
-document.querySelectorAll('form')[1].addEventListener('submit', add)
+document.querySelector('form').addEventListener('submit', add)
